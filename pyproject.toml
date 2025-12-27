@@ -1,0 +1,32 @@
+[project]
+name = "bunny_df"
+version = "0.0.1"
+authors = [
+{ name="Kiril", email="kirilboyanovbg@gmail.com" },
+]
+description = "Python package that makes it easy for data scientists to work with reading and writing data frames and other relevant objects to and from Bunny.net object storage"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pandas>=2.0",
+    "python-dotenv>=1.0",
+    "requests>=2.32.5",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/cyrilby/bunny-df"
+
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"easy_sql" = ["*.csv"]
+
