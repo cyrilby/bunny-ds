@@ -1,11 +1,15 @@
 # BunnyDF: Reading & writing data frames from Bunny.net
 
+- **Author**: github.com/cyrilby
+- **Last meaningful update**: 27-12-2025
+
 This Python package allows for easily reading and writing `pandas` data frames and other data science-related objects to Bunny.net cloud storage.
 
 ## Requirements
 
 - Python 3.10 or higher
 - Python packages as specified in the `pyproject.toml` file
+- Additional packages may be needed to enable reading/writing specific file formats such as Excel, Parquet, etc. (please check the official [pandas documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html) for more information)
 
 ## Functionalities
 
