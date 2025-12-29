@@ -1,6 +1,6 @@
 [project]
 name = "bunny_df"
-version = "0.1"
+version = "0.1.1"
 authors = [
 { name="Kiril", email="kirilboyanovbg@gmail.com" },
 ]
@@ -17,6 +17,17 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+[project.optional-dependencies]
+ods = [
+    "odfpy>=1.4.1",
+]
+excel = [
+    "openpyxl>=3.1",
+]
+parquet = [
+    "pyarrow>=22.0",
+]
+
 [project.urls]
 Homepage = "https://github.com/cyrilby/bunny-df"
 
@@ -28,5 +39,4 @@ build-backend = "setuptools.build_meta"
 include-package-data = true
 
 [tool.setuptools.package-data]
-"easy_sql" = ["*.csv"]
-
+"bunny_df" = ["*.txt"]

@@ -13,7 +13,9 @@ from typing import get_args, Literal
 # %% Defining supported extensions
 
 # Extensions for pandas data frames
-DataFrameExt = Literal["csv", "xlsx", "parquet"]
+DataFrameExt = Literal[
+    "csv", "xlsx", "parquet", "ods", "stata", "hdf", "f", "feather", "pkl", "pickle"
+]
 
 
 # %% Function to load credentials from .ENV file
@@ -220,8 +222,22 @@ def write_tmp_df(df: pd.DataFrame, format: DataFrameExt, **kwargs) -> str:
 
         if format == "csv":
             df.to_csv(temp_path, **kwargs)
+        elif format in ["xls", "xlsx", "xlsm"]:
+            df.to_excel(temp_path, **kwargs)
+        elif format == "ods":
+            df.to_excel(temp_path, engine="odf", **kwargs)
+        elif format == "stata":
+            df.to_stata(temp_path, **kwargs)
+        elif format == "hdf":
+            df.to_hdf(temp_path, **kwargs)
         elif format == "parquet":
             df.to_parquet(temp_path, **kwargs)
+        elif format in ["f", "feather"]:
+            df.to_feather(temp_path, **kwargs)
+        elif format in ["pkl", "pickle"]:
+            df.to_pickle(temp_path, **kwargs)
+        else:
+            raise ValueError(f"Unsupported file extension: '{format}'.")
 
     return temp_path
 
@@ -248,8 +264,22 @@ def read_tmp_df(local_file_path: str, **kwargs) -> pd.DataFrame:
     # Reading a df using standard pandas
     if format == "csv":
         df = pd.read_csv(local_file_path, **kwargs)
+    elif format in ["xls", "xlsx", "xlsm"]:
+        df = pd.read_excel(local_file_path, **kwargs)
+    elif format == "ods":
+        df = pd.read_excel(local_file_path, engine="odf", **kwargs)
+    elif format == "stata":
+        df = pd.read_stata(local_file_path, **kwargs)
+    elif format == "hdf":
+        df = pd.read_hdf(local_file_path, **kwargs)
     elif format == "parquet":
         df = pd.read_parquet(local_file_path, **kwargs)
+    elif format in ["f", "feather"]:
+        df = pd.read_feather(local_file_path, **kwargs)
+    elif format in ["pkl", "pickle"]:
+        df = pd.read_pickle(local_file_path, **kwargs)
+    else:
+        raise ValueError(f"Unsupported file extension: '{format}'.")
 
     return df
 
