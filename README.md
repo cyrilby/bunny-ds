@@ -1,4 +1,4 @@
-# BunnyDF: Reading & writing data frames from Bunny.net
+# BunnyDS: Reading & writing data frames from Bunny.net
 
 - **Author**: github.com/cyrilby
 - **Last meaningful update**: 29-12-2025
